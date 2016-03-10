@@ -3,7 +3,7 @@
 var PenNotes = [48, 50, 52, 55, 57, 60, 62, 64, 67, 69]; //default notes to hold the pentomic scale
 var MusicNotes = []; //this array at setup holds PenNotes[]. When submit Midi clicked+use Custom checked, it takes in userNotes[]
 var noteInput = []; // text input boxes notes, get pushed after clicking submit Midinotes
-var userNotes = []; //takes and holds noteInput[] (UG) values
+//var userNotes = []; //takes and holds noteInput[] (UG) values
 
 var serial; // variable to hold an instance of the serialport library
 var portName = '/dev/cu.usbserial-A5026YQG'; // fill in your serial port name here
@@ -39,7 +39,7 @@ function setup() {
   submit.position(500, 310); // put it here, cause that looks nice... well makes sense anyway
   submit.mousePressed(EnterNote);
   
-  //EnterNote() function runs. It is pushing noteInput (UG) values into userNotes[]. MusicNotes[] 
+  //EnterNote() function runs. It is pushing noteInput (UG) values into MusicNotes[] 
   function EnterNote() {
  
  MusicNotes.splice(0, MusicNotes.length);
@@ -52,31 +52,31 @@ function setup() {
   //Now we need to check the "Use Custom Scale" box to start playing
   
   //checkbox - "check to use custom scale" -- enables UG notes(noteIntput array) 
-  selectButton = createCheckbox(); //create checkbox "check to use custom scale"
-  selectButton.position(0, 350); // position checkbox 
-  selectButton.changed(UserScale); // detect change in state of checkbox
-  instructions = createDiv("Check to use custom scale"); // text "check to use custom scale"
-  instructions.position(30, 350); // position of text "check to use custom scale"
+  // selectButton = createCheckbox(); //create checkbox "check to use custom scale"
+  // selectButton.position(0, 350); // position checkbox 
+  // selectButton.changed(UserScale); // detect change in state of checkbox
+  // instructions = createDiv("Check to use custom scale"); // text "check to use custom scale"
+  // instructions.position(30, 350); // position of text "check to use custom scale"
   
   //This runs UserScale()
   //UserScale() is pushing userNotes[] into MusicNotes[]  
 
-function UserScale() {
-  boxSelection = !boxSelection //smart hack by JasonO http://p5js.org/reference/#/p5/createCheckbox
-  MusicNotes.splice(0, MusicNotes.length);
-  if (boxSelection === true && userNotes.length > 0 && userMedia === false) {
-    for (var m = 0; m < 10; m++) {
-      MusicNotes.push(userNotes[m]);
-    }
-  }
-  //
-  if (boxSelection === false && userMedia === false) {
-    for (var n = 0; n < PenNotes.length; n++) {
-      MusicNotes.push(PenNotes[n]);
-      //print("PenNotes " + PenNotes[n]);
-    }
-  }
-}
+// function UserScale() {
+//   boxSelection = !boxSelection //smart hack by JasonO http://p5js.org/reference/#/p5/createCheckbox
+//   MusicNotes.splice(0, MusicNotes.length);
+//   if (boxSelection === true && userNotes.length > 0 && userMedia === false) {
+//     for (var m = 0; m < 10; m++) {
+//       MusicNotes.push(userNotes[m]);
+//     }
+//   }
+//   //
+//   if (boxSelection === false && userMedia === false) {
+//     for (var n = 0; n < PenNotes.length; n++) {
+//       MusicNotes.push(PenNotes[n]);
+//       //print("PenNotes " + PenNotes[n]);
+//     }
+//   }
+// }
   
   //checkbox - "check to calibrate steps" (uncheck when finished)
   stepCalibration = createCheckbox();
@@ -148,7 +148,7 @@ background(255);
   //Displaying values of current notes
   displayNotes();
   //
-  updateNotes();
+  // updateNotes();
 }
 
 // CalibrateSteps() runs when "check to calibrate steps is checked"
@@ -360,12 +360,12 @@ function displayNotes(){
     }  
 }
 
-function updateNotes(){
-  //Displaying values of UG notes
-  for (var i = 0; i < userNotes.length; i++){
-  text(userNotes[i], 0+i*50, 330, 70, 80);  
-    }  
+// function updateNotes(){
+//   //Displaying values of UG notes
+//   for (var i = 0; i < MusicNotes.length; i++){
+//   text(MusicNotes[i], 0+i*50, 330, 70, 80);  
+//     }  
   
-}
+// }
 
 

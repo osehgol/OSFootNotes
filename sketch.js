@@ -42,9 +42,9 @@ function setup() {
   //EnterNote() function runs. It is pushing noteInput (UG) values into userNotes[]. MusicNotes[] 
   function EnterNote() {
  
- userNotes.splice(0, userNotes.length);
+ MusicNotes.splice(0, MusicNotes.length);
   for (var i = 0; i < 10; i++) {
-    userNotes.push(noteInput[i].value());
+    MusicNotes.push(noteInput[i].value());
     noteInput[i].value("");
   }
  

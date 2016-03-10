@@ -1,0 +1,21 @@
+CHECK BOX
+//Check to use custom scale:
+selectButton.changed(UserScale);
+UserScale() is pushing userNotes[] into MusicNotes[]
+
+Can we push userNotes[] into MusicNotes[] when button “Submit Midi Notes” is pushed?
+
+BUTTON
+submit.mousePressed(EnterNote);
+EnterNote() is pushing noteInput[] into userNotes[]
+
+	     Button	  CheckBox
+So noteInput[] > userNotes[] > MusicNotes[]
+
+I want noteInput[] > MusicNotes[] at button click
+
+
+To be clear:
+var MusicNotes = []; //this array at setup holds PenNotes[]. When submit Midi clicked+use Custom checked, it takes in userNotes[]
+var noteInput = []; // text input boxes, notes get pushed after clicking submit Midinotes
+var userNotes = []; //takes and holds noteInput[] (UG) values
